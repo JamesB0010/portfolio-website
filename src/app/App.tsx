@@ -4,7 +4,7 @@ export const App = () =>
 {
     return (
         <StrictMode>
-            <p>Hello World</p>
+            <p>Hello World, lalala</p>
         </StrictMode>
     )
 }
