@@ -5,22 +5,25 @@
   "main": "index.js",
   "scripts": {
     "start": "npx webpack serve -c ./webpack.config.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/lodash": "^4.17.24",
     "@types/node": "^25.9.3",
     "css-loader": "^7.1.4",
+    "eslint": "^10.5.0",
     "sass": "^1.101.0",
     "sass-loader": "^17.0.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.6.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.0",
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3",
     "webpack-dev-server": "^5.2.5"
