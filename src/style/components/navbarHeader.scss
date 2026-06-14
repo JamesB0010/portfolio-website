@@ -1,0 +1,37 @@
+.navbar-header {
+    width: 100%;
+    background-color: #000000;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.12rem;
+}
+
+.navbar-header-section {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.navbar-header-left {
+    @extend .navbar-header-section;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-header-center {
+    @extend .navbar-header-section;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-header-right {
+    @extend .navbar-header-section;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
