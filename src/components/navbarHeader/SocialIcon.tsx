@@ -1,5 +1,5 @@
 interface SocialIconProps {
-    image: any;
+    image: string;
 }
 
 export const SocialIcon = ({image}: SocialIconProps) =>

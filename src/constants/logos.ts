@@ -1,5 +1,5 @@
 import linkedinLogo from "../../public/images/linkedinLogo.png";
 
 export const logos = {
-    linkedin: linkedinLogo
+    linkedin: linkedinLogo as string
 } as const;
