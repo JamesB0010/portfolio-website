@@ -31,6 +31,7 @@
     "webpack-dev-server": "^5.2.5"
   },
   "dependencies": {
+    "fast-glob": "^3.3.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   }

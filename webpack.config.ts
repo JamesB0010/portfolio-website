@@ -1,6 +1,7 @@
 import path from "node:path";
 import {fileURLToPath} from "url";
 import webpack from "webpack";
+import {ImageRecordPlugin} from "./src/webpackLoaders/ImageRecordPlugin.ts";
 
 import "webpack-dev-server";
 
@@ -16,7 +17,7 @@ const config: webpack.Configuration = {
         static: {
             directory: path.join(__dirname, "public")
         },
-        hot: true
+        hot: true,
     },
     module: {
         rules: [
@@ -52,7 +53,10 @@ const config: webpack.Configuration = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist")
-    }
+    },
+    plugins: [
+        new ImageRecordPlugin("public/images", "src/generated")
+    ]
 }
 
 export default config;

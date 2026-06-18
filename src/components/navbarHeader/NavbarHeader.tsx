@@ -1,6 +1,6 @@
 import {SocialIcon} from "./SocialIcon";
 import { PageLinks } from "./PageLinks";
-import {logos} from "../../constants/logos";
+import GeneratedImageRecord from "../../generated/GeneratedImageRecord";
 
 export const NavbarHeader = () =>
 {
@@ -15,7 +15,11 @@ export const NavbarHeader = () =>
             <div className="navbar-header-right">
                 <button>
                     <SocialIcon
-                    image={logos.linkedin} />
+                    image={GeneratedImageRecord.linkedinLogo} />
+                </button>
+                <button>
+                    <SocialIcon
+                    image={GeneratedImageRecord.youtubeLogo} />
                 </button>
             </div>
 
