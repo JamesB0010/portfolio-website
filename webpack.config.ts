@@ -1,7 +1,7 @@
 import path from "node:path";
 import {fileURLToPath} from "url";
 import webpack from "webpack";
-import {ImageRecordPlugin} from "./src/webpackLoaders/ImageRecordPlugin.ts";
+import {ReactGenImageComponentsPlugin} from "./src/webpackLoaders/ReactGenImageComponentsPlugin.ts";
 
 import "webpack-dev-server";
 
@@ -55,7 +55,7 @@ const config: webpack.Configuration = {
         path: path.resolve(__dirname, "dist")
     },
     plugins: [
-        new ImageRecordPlugin("public/images", "src/generated")
+        new ReactGenImageComponentsPlugin("public/images", "src/generated")
     ]
 }
 
