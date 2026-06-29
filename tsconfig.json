@@ -1,18 +1,14 @@
 {
+  "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "target": "esnext",
+    "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "allowJs": true,
-    "types": ["node", "webpack/module"],
-    "sourceMap": true,
-    "allowImportingTsExtensions": true,
-    "rewriteRelativeImportExtensions": true
+    "lib": ["DOM"],
+    "moduleResolution": "bundler",
+    "module": "esnext"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }

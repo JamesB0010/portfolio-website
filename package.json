@@ -29,7 +29,8 @@
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3",
     "webpack-dev-server": "^5.2.5",
-    "@JamesB0010/portfolio-website-react-gen-image-components-plugin": "^1.0.0"
+    "@JamesB0010/portfolio-website-react-gen-image-components-plugin": "^1.0.0",
+    "@tsconfig/node-lts": "latest"
   },
   "dependencies": {
     "react": "^19.2.7",
