@@ -1,12 +1,13 @@
 import { StrictMode } from "react";
 import {NavbarHeader} from "../components/navbarHeader/NavbarHeader";
+import { Page } from "./landing/Page";
 
 export const App = () =>
 {
     return (
         <StrictMode>
             <NavbarHeader />
-            <p>Hello World, lalala</p>
+            <Page />
         </StrictMode>
     )
 }

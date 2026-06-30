@@ -1,7 +1,30 @@
 @use "./components/navbarHeader.scss";
 @use "./components/social-icon.scss";
+@use "./components//page-link.scss";
 
 body {
     background-color: #c7e0e5;
     margin: 0px;
+    overflow-y: scroll;
+    overflow-x: clip;
+    overflow: scroll;
+    scrollbar-color: black white;
+    scrollbar-width: thin;
+}
+
+.landing-page-hero-image 
+{
+    width: 100%;
+    height: 80%;
+}
+
+.landing-page-hero-content
+{
+    position: absolute;
+    inset: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
