@@ -1,0 +1,29 @@
+.landing-page-hero-image 
+{
+    width: 100%;
+    height: 80%;
+}
+
+.landing-page-hero-content
+{
+    position: absolute;
+    inset: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+
+    h1 {
+        margin: 0px;
+    }
+
+    strong {
+        white-space: pre-wrap;
+    }
+
+    p {
+        white-space: pre-wrap;
+        text-align: center;
+    }
+}

@@ -7,6 +7,9 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.12rem;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
 }
 
 .navbar-header-left {

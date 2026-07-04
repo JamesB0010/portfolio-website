@@ -9,6 +9,9 @@ export const PageLinks = () =>
                 <p>About</p>
             </button>
             <button className="page-link-button">
+                <p>Indusry Experience</p>
+            </button>
+            <button className="page-link-button">
                 <p>Articles</p>
             </button>
             <button className="page-link-button">
