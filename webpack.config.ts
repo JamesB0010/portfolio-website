@@ -71,7 +71,7 @@ const config: webpack.Configuration = {
         path: path.resolve(__dirname, "dist")
     },
     plugins: [
-        new ReactGenImageComponentsPlugin("public/images", __dirname)
+        new ReactGenImageComponentsPlugin("public/image-components", __dirname)
     ]
 }
 

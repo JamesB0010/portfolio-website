@@ -12,12 +12,10 @@ interface AppProps
 export const App = ({ PageToRender }: AppProps) =>
 {
     return (
-        <StrictMode>
-            <div style={{display: "flex", alignItems: "stretch", flexDirection: "column", minHeight: "100%"}}>
-                <NavbarHeader />
-                <PageToRender />
-                <Footer />
-            </div>
-        </StrictMode>
+        <div style={{display: "flex", alignItems: "stretch", flexDirection: "column", minHeight: "100%"}}>
+            <NavbarHeader />
+            <PageToRender />
+            <Footer />
+        </div>
     )
 }

@@ -3,8 +3,13 @@
     background-color: transparent;
     color: white;
     border: none;
+    transition: transform 0.2s ease-in-out;
 
     p {
         text-wrap: nowrap;
+    }
+
+    &:hover {
+        transform: scale(1.1);
     }
 }
