@@ -1,15 +1,21 @@
-import { StrictMode } from "react";
+import { StrictMode, JSX} from "react";
 import {NavbarHeader} from "../components/navbarHeader/NavbarHeader";
-import { Page } from "./landing/Page";
+import { Page as LandingPage } from "./landing/Page";
+import { Page as AboutPage } from "./about/Page";
 import { Footer } from "../components/footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export const App = () =>
+interface AppProps
+{
+    PageToRender: () => JSX.Element
+}
+export const App = ({ PageToRender }: AppProps) =>
 {
     return (
         <StrictMode>
             <div style={{display: "flex", alignItems: "stretch", flexDirection: "column", minHeight: "100%"}}>
                 <NavbarHeader />
-                <Page />
+                <PageToRender />
                 <Footer />
             </div>
         </StrictMode>
