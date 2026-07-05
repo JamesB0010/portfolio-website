@@ -14,8 +14,10 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@JamesB0010/portfolio-website-react-gen-image-components-plugin": "^1.0.0",
+    "@tsconfig/node-lts": "latest",
     "@types/lodash": "^4.17.24",
-    "@types/node": "^25.9.3",
+    "@types/node": "^25.9.4",
     "css-loader": "^7.1.4",
     "eslint": "^10.5.0",
     "file-loader": "^6.2.0",
@@ -28,11 +30,11 @@
     "typescript-eslint": "^8.61.0",
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3",
-    "webpack-dev-server": "^5.2.5",
-    "@JamesB0010/portfolio-website-react-gen-image-components-plugin": "^1.0.0",
-    "@tsconfig/node-lts": "latest"
+    "webpack-dev-server": "^5.2.5"
   },
   "dependencies": {
+    "@lordicon/react": "^1.11.0",
+    "lottie-web": "^5.13.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   }

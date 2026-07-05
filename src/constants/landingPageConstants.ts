@@ -1,0 +1,2 @@
+export const MIN_WIDTH_FOR_PAGE_LINKS = 800;
+export const MIN_WIDTH_FOR_SOCIAL_ICONS = 325;

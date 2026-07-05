@@ -1,6 +1,14 @@
-export const PageLinks = () =>
-{
-    return (
+import { MIN_WIDTH_FOR_PAGE_LINKS } from "../../constants/landingPageConstants";
+
+interface PageLinksProps {
+    currentViewportWidth: number;
+}
+
+export const PageLinks = ({ currentViewportWidth }: PageLinksProps) => {
+    const linksShouldRender =
+        currentViewportWidth >= MIN_WIDTH_FOR_PAGE_LINKS;
+
+    return linksShouldRender && (
         <div className="navbar-header-center">
             <button className="page-link-button">
                 <p>Home</p>
@@ -9,7 +17,7 @@ export const PageLinks = () =>
                 <p>About</p>
             </button>
             <button className="page-link-button">
-                <p>Indusry Experience</p>
+                <p>Industry Experience</p>
             </button>
             <button className="page-link-button">
                 <p>Articles</p>
@@ -27,5 +35,5 @@ export const PageLinks = () =>
                 <p>Contact</p>
             </button>
         </div>
-    )
-}
+    );
+};

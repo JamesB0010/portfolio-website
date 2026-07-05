@@ -4,9 +4,33 @@ import {YoutubeLogo} from "../../generatedImageComponents/YoutubeLogo"
 import { MailIcon } from "../../generatedImageComponents/MailIcon";
 import { GithibLogo } from "../../generatedImageComponents/GithibLogo";
 import { ItchIoLogo } from "../../generatedImageComponents/ItchIoLogo";
+import { Player } from "@lordicon/react";
+import HAMBURGER from "../../../public/lord-icons/hamburgerIcon.json";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AnimationDirection } from "@lordicon/react/dist/interfaces";
+import { MIN_WIDTH_FOR_PAGE_LINKS } from "../../constants/landingPageConstants";
+import { SocialIcons } from "./SocialIcons";
+import { NavbarHamburgerIcon } from "./NavbaramburgerIcon";
 
 export const NavbarHeader = () =>
 {
+    const [currentViewportWidth, setCurrentViewportWidth] = useState<number>(0);
+    
+    const onResize = useCallback(() => {
+        setCurrentViewportWidth(window.innerWidth);
+    }, []);
+
+    useEffect(() => 
+    {
+        setCurrentViewportWidth(window.innerWidth);
+        window.addEventListener("resize", onResize);
+
+        return () =>
+        {
+            window.removeEventListener("resize", onResize);
+        }
+    }, []);
+
     return (
         <div className="navbar-header">
             <div className="navbar-header-left">
@@ -14,23 +38,16 @@ export const NavbarHeader = () =>
             </div>
 
             <div style={{display: "flex", justifyContent: "flex-end"}}>
-                <PageLinks />
-                <div className="navbar-header-right">
-                    <button className="social-icon-button">
-                        <LinkedinLogo className="social-icon"/>
-                    </button>
-                    <button className="social-icon-button">
-                        <YoutubeLogo className="social-icon"/>
-                    </button>
-                    <button className="social-icon-button">
-                        <MailIcon className="social-icon" />
-                    </button>
-                    <button className="social-icon-button">
-                        <GithibLogo className="social-icon" />
-                    </button>
-                    <button className="social-icon-button">
-                        <ItchIoLogo className="social-icon" />
-                    </button>
+                <PageLinks 
+                    currentViewportWidth={currentViewportWidth}
+                />
+                <div style={{display: "flex", justifyContent: "stretch"}}>
+                    <SocialIcons 
+                        currentViewportWidth={currentViewportWidth}
+                    />
+                    <NavbarHamburgerIcon 
+                        currentViewportWidth={currentViewportWidth} 
+                    />
                 </div>
             </div>
         </div>
