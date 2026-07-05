@@ -6,6 +6,7 @@ import { MailIcon } from "../../generatedImageComponents/MailIcon";
 import { GithibLogo } from "../../generatedImageComponents/GithibLogo";
 import { ItchIoLogo } from "../../generatedImageComponents/ItchIoLogo";
 import { useCallback } from "react";
+import { SocialIcon } from "../SocialIcon";
 
 interface SocialIconsProps {
     currentViewportWidth: number;
@@ -15,48 +16,23 @@ export const SocialIcons = ({ currentViewportWidth }: SocialIconsProps) => {
     const iconsShouldRender =
         currentViewportWidth >= MIN_WIDTH_FOR_SOCIAL_ICONS;
 
-        const goToLinkedin = useCallback(() =>
-        {
-            window.location.href = "https://www.linkedin.com/in/james-richard-bland/";
-        }, []);
-
-        const goToYoutube = useCallback(() =>
-        {
-            window.location.href = "https://www.youtube.com/channel/UCd5tdaMVhvp2SkkqIxzsuRQ";
-        }, []);
-
-        const goToMail = useCallback(() =>
-        {
-            window.location.href = "mailto:jamesrichardbland@gmail.com";
-        }, []);
-
-        const goToGithub = useCallback(() =>
-        {
-            window.location.href = "https://github.com/JamesB0010";
-        }, []);
-
-        const goToItch = useCallback(() =>
-        {
-            window.location.href = "https://averagealtodriver.itch.io";
-        }, []);
-
     return iconsShouldRender && (
         <div className="navbar-header-right">
-            <button className="social-icon-button" onClick={goToLinkedin}>
+            <SocialIcon linkDestination="https://www.linkedin.com/in/james-richard-bland/">
                 <LinkedinLogo className="social-icon"/>
-            </button>
-            <button className="social-icon-button" onClick={goToYoutube}>
+            </SocialIcon>
+            <SocialIcon linkDestination="https://www.youtube.com/channel/UCd5tdaMVhvp2SkkqIxzsuRQ">
                 <YoutubeLogo className="social-icon"/>
-            </button>
-            <button className="social-icon-button" onClick={goToMail}>
+            </SocialIcon>
+            <SocialIcon linkDestination="mailto:jamesrichardbland@gmail.com">
                 <MailIcon className="social-icon" />
-            </button>
-            <button className="social-icon-button" onClick={goToGithub}>
+            </SocialIcon>
+            <SocialIcon linkDestination="https://github.com/JamesB0010">
                 <GithibLogo className="social-icon" />
-            </button>
-            <button className="social-icon-button" onClick={goToItch}>
+            </SocialIcon>
+            <SocialIcon linkDestination="https://averagealtodriver.itch.io">
                 <ItchIoLogo className="social-icon" />
-            </button>
+            </SocialIcon>
         </div>
     )
 };

@@ -12,9 +12,9 @@ interface AppProps
 export const App = ({ PageToRender }: AppProps) =>
 {
     return (
-        <div style={{display: "flex", alignItems: "stretch", flexDirection: "column", minHeight: "100%"}}>
+        <div style={{display: "flex", alignItems: "stretch", flexDirection: "column", minHeight: "100vh"}}>
             <NavbarHeader />
-            <PageToRender />
+                <PageToRender />
             <Footer />
         </div>
     )
