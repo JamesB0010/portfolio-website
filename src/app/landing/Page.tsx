@@ -1,3 +1,4 @@
+import { Carousel } from "../../components/Carousel"
 import { JamesPortrait } from "../../generatedImageComponents/JamesPortrait"
 
 export const Page = () =>
@@ -15,7 +16,9 @@ export const Page = () =>
                     </p>
                 </div>
             </div>
-            <div style={{width: "100%", height: "600px"}}>
+            <div style={{width: "100%", height: "600px", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "center"}}>
+                <div style={{height: "5%"}}/>
+                <Carousel />
             </div>
         </div>
     )

@@ -1,12 +1,9 @@
-@use "./components/navbarHeader.scss";
-@use "./components/social-icon.scss";
-@use "./components//page-link.scss";
-@use "./pages/landing.scss";
-@use "./components/footer.scss";
-@use "./components/page-heading.scss";
+@use "./components/components.scss";
+@use "./pages/pages.scss";
+@use "./abstracts/variables.scss";
 
 body {
-    background-color: #c7e0e5;
+    background-color: variables.$main-background-color;
     margin: 0px;
     overflow-x: clip;
     overflow-y: auto;
