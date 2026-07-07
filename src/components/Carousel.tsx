@@ -7,38 +7,152 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 export const Carousel = () =>
 {
     const [index, setIndex] = useState<number>(0);
+    const lastIndexRef = useRef<number>(0)
 
     const scrollingBodyRef = useRef<HTMLDivElement | null>(null)
 
-    const [scrollBehaviour, setScrollBehaviour] = useState<"auto" | "smooth">("smooth");
+    const [scrollBehaviour, setScrollBehaviour] = useState<"auto" | "smooth">("auto");
+
+    const [direction, setDirection] = useState<-1 | 1>(1);
+
+    const [scrollBehaviourLocked, setScrollBehaviourLocked] = useState<Boolean>(false);
 
     const incrementCarousel = useCallback(() => {
-        setIndex((prevIndex) => (prevIndex + 1) % 4);
-    }, []);
+        if ((lastIndexRef.current === index -1 || lastIndexRef.current === index +1 || lastIndexRef.current === index) && !scrollBehaviourLocked)
+        {
+            setScrollBehaviour("smooth");
+        }
+        setDirection(1);
+        setIndex((prevIndex) =>
+        {
+            lastIndexRef.current = prevIndex;
+            return (prevIndex + 1) % 4;
+        })
+    }, [index, lastIndexRef, scrollBehaviourLocked]);
 
     const decrementCarousel = useCallback(() => {
-    setIndex((prevIndex) => (prevIndex - 1 + 4) % 4);
-    }, []);
+        if ((lastIndexRef.current === index -1 || lastIndexRef.current === index +1 || lastIndexRef.current === index) && !scrollBehaviourLocked)
+        {
+            setScrollBehaviour("smooth");
+        }
+        setDirection(-1);
+        setIndex((prevIndex) => 
+        {
+            lastIndexRef.current = prevIndex;
+            return (prevIndex - 1 + 4) % 4;
+        })
+    }, [index, lastIndexRef, scrollBehaviourLocked]);
 
     const scrollOnTimeInterval = useCallback(() =>
     {
-        incrementCarousel();
-    }, [incrementCarousel])
+        if (!scrollBehaviourLocked)
+        {
+            setScrollBehaviour("smooth");
+        }
+        (direction === 1 ? incrementCarousel : decrementCarousel)();
+    }, [incrementCarousel, decrementCarousel, direction])
 
     const onScrollEnd = useCallback(() =>
     {
-        console.log("scroll end");
+        if (direction === 1)
+        {
+            if (index === 3)
+            {
+                setScrollBehaviour("auto");
+                setIndex(0);
+            }
+            else if (index === 0)
+            {
+                setScrollBehaviour("smooth");
+            }
+        }
+        else
+        {
+            if (index === 0)
+            {
+                setScrollBehaviour("auto");
+                setIndex(3);
+            }
+            else if (index === 3)
+            {
+                setScrollBehaviour("smooth");
+            }
+        }
     }, [index]);
+
+    const onScrollStart = useCallback(() =>
+    {
+        if (direction === -1 && index === 3 && lastIndexRef.current === 0)
+        {
+            setScrollBehaviour("auto");
+            setIndex((prevIndex) => 
+                {
+                    lastIndexRef.current = prevIndex;
+                    return 3;
+                }
+            );
+            console.log("snap");
+
+            if (scrollingBodyRef.current)
+            {
+                scrollingBodyRef.current.onscrollend = () =>
+                {
+                    if (!scrollBehaviourLocked)
+                    {
+                        setScrollBehaviour("smooth");
+                    }
+                    decrementCarousel();
+                    if (scrollingBodyRef.current)
+                    {
+                        scrollingBodyRef.current.onscrollend = onScrollEnd;
+                    }
+                }
+            }
+        }
+        else if (direction === 1 && index === 0 && lastIndexRef.current === 3)
+        {
+            console.log("aww snap");
+
+            setScrollBehaviour("auto");
+            setIndex((prevIndex) => 
+                {
+                    lastIndexRef.current = prevIndex;
+                    return 0;
+                }
+            );
+
+            if (scrollingBodyRef.current)
+            {
+                scrollingBodyRef.current.onscrollend = () =>
+                {
+                    if (!scrollBehaviourLocked)
+                    {
+                        setScrollBehaviour("smooth");
+                    }
+                    incrementCarousel();
+                    if (scrollingBodyRef.current)
+                    {
+                        scrollingBodyRef.current.onscrollend = onScrollEnd;
+                    }
+                }
+            }
+        }
+
+    }, [index, scrollingBodyRef, setScrollBehaviour, decrementCarousel, onScrollEnd, lastIndexRef, scrollBehaviourLocked]);
 
     useEffect(() =>
     {
         if (scrollingBodyRef.current)
         {
             const scrollWidth = scrollingBodyRef.current.scrollWidth;
-            scrollingBodyRef.current.scroll({top: 0, left: (scrollWidth / 6) * index})
+            scrollingBodyRef.current.scrollTo({
+                top: 0,
+                left: (scrollWidth / 6) * index,
+                behavior: scrollBehaviour,
+            });
         }
 
-    }, [index])
+    }, [index, scrollBehaviour])
     
     useEffect(() =>
     {
@@ -48,26 +162,16 @@ export const Carousel = () =>
         {
             clearInterval(interval);
         }
-    }, [scrollOnTimeInterval, index]);
+    }, [scrollOnTimeInterval, index, direction]);
 
     useEffect(() =>
     {
         if (scrollingBodyRef.current)
         {
-            scrollingBodyRef.current.onscrollend = () =>
-            {
-                if (index === 0)
-                {
-                    setScrollBehaviour("smooth");
-                }
-                else if (index === 3)
-                {
-                    setIndex(0);
-                    setScrollBehaviour("auto");
-                }
-            }
+            scrollingBodyRef.current.onscrollend = onScrollEnd;
+            scrollingBodyRef.current.onscroll = onScrollStart;
         }
-    }, [onScrollEnd, scrollingBodyRef, setIndex])
+    }, [onScrollEnd, onScrollStart, scrollingBodyRef, setIndex])
 
     const carouselContent = (
         <div className="carousel-container">

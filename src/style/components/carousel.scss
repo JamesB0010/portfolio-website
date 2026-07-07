@@ -13,6 +13,7 @@
     justify-content: start;
     align-items: center;
     overflow-x: hidden;
+    scroll-snap-type: x mandatory;
 }
 
 .carousel-container {
@@ -22,6 +23,7 @@
     justify-content: stretch;
     align-items: center;
     flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .arrows-container {
@@ -40,10 +42,15 @@
     color: white;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6));
     z-index: 10;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
 
     &:hover {
         transform: scale(1.1);
-        transition: transform 0.2s ease-in-out;
+    }
+
+    &:active {
+        transform: scale(0.9);
     }
 }
 
@@ -52,6 +59,8 @@
     background-position: center;
     height: 100%;
     width: 100%;
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.08));
+    transition: filter 0.22s ease, transform 0.22s ease;
 }
 
 .carousel-item {
@@ -62,9 +71,21 @@
     flex-direction: column;
     justify-content: stretch;
     align-items: center;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-    background-color: variables.$main-background-color;
+    background-color: rgb(164, 205, 213);
+    scroll-snap-align: start;
+    border-radius: 8px;
+    overflow: hidden;
+    /* surrounding, non-directional shadow for even depth */
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.10);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        /* subtle larger surrounding glow on hover */
+        box-shadow: 0 0 28px rgba(0, 0, 0, 0.14);
+    }
 }
+
 
 .carousel-item-text-container {
     display: flex;
