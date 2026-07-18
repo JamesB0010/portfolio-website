@@ -1,0 +1,23 @@
+.about-page-first-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.james-presentation-image {
+    height: 300px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .about-page-first-section {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .james-presentation-image {
+        width: 80%;
+    }
+}

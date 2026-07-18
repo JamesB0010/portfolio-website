@@ -3,12 +3,12 @@ import { MIN_WIDTH_FOR_PAGE_LINKS } from "../../constants/landingPageConstants";
 import { useCallback } from "react";
 
 interface PageLinksProps {
-    currentViewportWidth: number;
+    currentViewportWidth?: number;
 }
 
 export const PageLinks = ({ currentViewportWidth }: PageLinksProps) => {
-    const linksShouldRender =
-        currentViewportWidth >= MIN_WIDTH_FOR_PAGE_LINKS;
+    const linksShouldRender = currentViewportWidth ? 
+        currentViewportWidth >= MIN_WIDTH_FOR_PAGE_LINKS : true;
 
         const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export const PageLinks = ({ currentViewportWidth }: PageLinksProps) => {
         }, [navigate]);
 
     return linksShouldRender && (
-        <div className="navbar-header-center">
+        <>
             <button className="page-link-button" onClick={() => navigateToPage("")}>
                 <p>Home</p>
             </button>
@@ -42,6 +42,6 @@ export const PageLinks = ({ currentViewportWidth }: PageLinksProps) => {
             <button className="page-link-button" onClick={() => navigateToPage("contact")}>
                 <p>Contact</p>
             </button>
-        </div>
+        </>
     );
 };

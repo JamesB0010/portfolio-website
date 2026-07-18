@@ -12,7 +12,12 @@ import { MIN_WIDTH_FOR_PAGE_LINKS } from "../../constants/landingPageConstants";
 import { SocialIcons } from "./SocialIcons";
 import { NavbarHamburgerIcon } from "./NavbaramburgerIcon";
 
-export const NavbarHeader = () =>
+interface NavbarHeaderProps
+{
+    onHamburgerClick?: () => void;
+}
+
+export const NavbarHeader = ({onHamburgerClick}: NavbarHeaderProps) =>
 {
     const [currentViewportWidth, setCurrentViewportWidth] = useState<number>(0);
     
@@ -38,14 +43,17 @@ export const NavbarHeader = () =>
             </div>
 
             <div style={{display: "flex", justifyContent: "flex-end"}}>
-                <PageLinks 
-                    currentViewportWidth={currentViewportWidth}
-                />
+                <div className="navbar-header-center">
+                    <PageLinks 
+                        currentViewportWidth={currentViewportWidth}
+                    />
+                </div>
                 <div style={{display: "flex", justifyContent: "stretch"}}>
                     <SocialIcons 
                         currentViewportWidth={currentViewportWidth}
                     />
                     <NavbarHamburgerIcon 
+                        onClick={onHamburgerClick}
                         currentViewportWidth={currentViewportWidth} 
                     />
                 </div>

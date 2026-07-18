@@ -22,7 +22,7 @@ export const Page = () =>
             </div>
             <div style={{width: "100%", height: "600px", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "center"}}>
                 <div style={{height: "5%"}}/>
-                <Carousel>
+                <Carousel carouselAutoScrollInterval={6000}>
                     <CarouselItem imageFilePath={INSPIRATIONAL_STUDENT_IMAGE}>
                         <p>Inspirational Student of the year</p>
                     </CarouselItem>

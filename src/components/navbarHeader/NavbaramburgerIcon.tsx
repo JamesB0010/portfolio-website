@@ -1,14 +1,15 @@
 import { Player } from "@lordicon/react";
-import { AnimationDirection } from "@lordicon/react/dist/interfaces";
+import { AnimationDirection, IPlayer } from "@lordicon/react/dist/interfaces";
 import { useCallback, useRef, useState } from "react";
 import HAMBURGER from "../../../public/lord-icons/hamburgerIcon.json";
 import { MIN_WIDTH_FOR_PAGE_LINKS } from "../../constants/landingPageConstants";
 
 interface NavbarHamburgerIconProps {
     currentViewportWidth: number;
+    onClick?: () => void;
 }
 
-export const NavbarHamburgerIcon = ({ currentViewportWidth} : NavbarHamburgerIconProps) => {
+export const NavbarHamburgerIcon = ({currentViewportWidth, onClick} : NavbarHamburgerIconProps) => {
     const [playerDirection, setPlayerDirection] = useState<AnimationDirection>(1);
     const playerRef = useRef<Player>(null);
 
@@ -19,13 +20,15 @@ export const NavbarHamburgerIcon = ({ currentViewportWidth} : NavbarHamburgerIco
             });
     }, [playerRef]);
     
-    const PlayHamburgerAnimation = useCallback(() => {
+    const onClickCallback = useCallback(() =>
+    {
         playerRef.current?.play();
-    }, [playerRef]);
+        onClick?.();
+    }, []);
     return (
         <button 
             className="social-icon-button hamburger-icon"
-            onClick={PlayHamburgerAnimation}
+            onClick={onClickCallback}
             style={{visibility: currentViewportWidth < MIN_WIDTH_FOR_PAGE_LINKS ? "visible" : "hidden"}}
         >
             <Player 
