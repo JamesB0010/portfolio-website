@@ -46,9 +46,6 @@ export const PageLinks = ({ currentViewportWidth, onPageLinkClicked }: PageLinks
             <button className="page-link-button" onClick={() => pageLinkClickedCallback("cv")}>
                 <p>CV</p>
             </button>
-            <button className="page-link-button" onClick={() => pageLinkClickedCallback("contact")}>
-                <p>Contact</p>
-            </button>
         </>
     );
 };
