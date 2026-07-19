@@ -9,7 +9,6 @@ import { Page as ArticlesPage } from "./app/articles/Page";
 import { Page as SkillsPage } from "./app/skills/Page";
 import { Page as GalleryPage } from "./app/gallery/Page";
 import { Page as CVPage } from "./app/cv/Page";
-import { Page as ContactPage } from "./app/contact/Page";
 
 import { StrictMode } from "react";
 
@@ -29,7 +28,6 @@ if (rootNode)
                     <Route path="/skills" element={<App PageToRender={SkillsPage} />} />
                     <Route path="/gallery" element={<App PageToRender={GalleryPage} />} />
                     <Route path="/cv" element={<App PageToRender={CVPage} />} />
-                    <Route path="/contact" element={<App PageToRender={ContactPage} />} />
                 </Routes>
             </BrowserRouter>
         </StrictMode>
