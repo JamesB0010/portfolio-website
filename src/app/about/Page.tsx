@@ -22,7 +22,7 @@ export const Page = () =>
             </div>
             <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "center", width: "100%"}}>
                 <h2>Some cool climbing footage</h2>
-                <Carousel carouselAutoScrollInterval={6000}>
+                {/* <Carousel carouselAutoScrollInterval={6000}>
                     <CarouselItem imageFilePath={INSPIRATIONAL_STUDENT_IMAGE}>
                         <p>Inspirational Student of the year</p>
                     </CarouselItem>
@@ -32,7 +32,7 @@ export const Page = () =>
                     <CarouselItem imageFilePath={TIGA_GRAD_OF_YEAR_IMAGE}>
                         <p>Tiga graduate of the year</p>
                     </CarouselItem>
-                </Carousel>
+                </Carousel> */}
             </div>
             <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "7rem", backgroundColor: "#e0f9ff", marginTop: "1.5rem"}}>
                 <h2 style={{margin: "0"}}>"Some cool quote"</h2>

@@ -6,20 +6,26 @@ import { GithibLogo } from "../../generatedImageComponents/GithibLogo";
 import { ItchIoLogo } from "../../generatedImageComponents/ItchIoLogo";
 import { Player } from "@lordicon/react";
 import HAMBURGER from "../../../public/lord-icons/hamburgerIcon.json";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { AnimationDirection } from "@lordicon/react/dist/interfaces";
 import { MIN_WIDTH_FOR_PAGE_LINKS } from "../../constants/landingPageConstants";
 import { SocialIcons } from "./SocialIcons";
-import { NavbarHamburgerIcon } from "./NavbaramburgerIcon";
+import { NavbarHamburgerIcon, NavbarHamburgerIconImperatives } from "./NavbaramburgerIcon";
+
+export interface NavbarHeaderImperatives
+{
+    playHamburgerAnimation: () => void;
+}
 
 interface NavbarHeaderProps
 {
     onHamburgerClick?: () => void;
 }
 
-export const NavbarHeader = ({onHamburgerClick}: NavbarHeaderProps) =>
+export const NavbarHeader = forwardRef<NavbarHeaderImperatives, NavbarHeaderProps>(({onHamburgerClick}, ref) =>
 {
     const [currentViewportWidth, setCurrentViewportWidth] = useState<number>(0);
+    const hamburgerIconRef = useRef<NavbarHamburgerIconImperatives | null>(null);
     
     const onResize = useCallback(() => {
         setCurrentViewportWidth(window.innerWidth);
@@ -33,6 +39,13 @@ export const NavbarHeader = ({onHamburgerClick}: NavbarHeaderProps) =>
         return () =>
         {
             window.removeEventListener("resize", onResize);
+        }
+    }, []);
+
+    useImperativeHandle(ref, () =>
+    {
+        return {
+            playHamburgerAnimation: () => hamburgerIconRef.current?.playAnimation()
         }
     }, []);
 
@@ -53,6 +66,7 @@ export const NavbarHeader = ({onHamburgerClick}: NavbarHeaderProps) =>
                         currentViewportWidth={currentViewportWidth}
                     />
                     <NavbarHamburgerIcon 
+                        ref={hamburgerIconRef}
                         onClick={onHamburgerClick}
                         currentViewportWidth={currentViewportWidth} 
                     />
@@ -60,4 +74,4 @@ export const NavbarHeader = ({onHamburgerClick}: NavbarHeaderProps) =>
             </div>
         </div>
     )
-}
+});

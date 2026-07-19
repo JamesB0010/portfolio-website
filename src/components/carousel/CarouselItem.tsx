@@ -1,16 +1,16 @@
-import {ReactNode} from "react";
+import {cloneElement, ImgHTMLAttributes, ReactElement, ReactNode} from "react";
 
 interface CarouselItemProps
 {
-    imageFilePath: string;
+    contentImage: ReactElement<ImgHTMLAttributes<HTMLImageElement>>
     children: ReactNode;
 }
 
-export const CarouselItem = ({imageFilePath, children}: CarouselItemProps) =>
+export const CarouselItem = ({contentImage, children}: CarouselItemProps) =>
 {
     return (
         <div className="carousel-item">
-            <div className="carousel-image" style={{ backgroundImage: `url(${imageFilePath})` }} />
+            {cloneElement(contentImage, {className: "carousel-image"})}
             <div className="carousel-item-text-container">
                 {children}
             </div>

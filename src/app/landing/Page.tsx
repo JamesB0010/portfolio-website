@@ -1,9 +1,9 @@
 import { Carousel } from "../../components/carousel/Carousel"
 import { JamesPortrait } from "../../generatedImageComponents/JamesPortrait"
-import INSPIRATIONAL_STUDENT_IMAGE from "../../../public/backgrounds/InspirationalStudentOfTheYear.jpeg";
-import TIGA_GRAD_OF_YEAR_IMAGE from "../../../public/backgrounds/TigaGradOfTheYear.png";
-import UNITY_HONOURABLE_MENTION from "../../../public/backgrounds/UnityHonourableMention.png";
 import { CarouselItem } from "../../components/carousel/CarouselItem";
+import { InspirationalStudentOfTheYear } from "../../generatedImageComponents/InspirationalStudentOfTheYear";
+import { UnityHonourableMention } from "../../generatedImageComponents/UnityHonourableMention";
+import { TigaGradOfTheYear } from "../../generatedImageComponents/TigaGradOfTheYear";
 
 export const Page = () =>
 {
@@ -23,13 +23,13 @@ export const Page = () =>
             <div style={{width: "100%", height: "600px", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "center"}}>
                 <div style={{height: "5%"}}/>
                 <Carousel carouselAutoScrollInterval={6000}>
-                    <CarouselItem imageFilePath={INSPIRATIONAL_STUDENT_IMAGE}>
+                    <CarouselItem contentImage={<InspirationalStudentOfTheYear />}>
                         <p>Inspirational Student of the year</p>
                     </CarouselItem>
-                    <CarouselItem imageFilePath={UNITY_HONOURABLE_MENTION}>
+                    <CarouselItem contentImage={<UnityHonourableMention />}>
                         <p>Unity for humanity grant honourable mention</p>
                     </CarouselItem>
-                    <CarouselItem imageFilePath={TIGA_GRAD_OF_YEAR_IMAGE}>
+                    <CarouselItem contentImage={<TigaGradOfTheYear />}>
                         <p>Tiga graduate of the year</p>
                     </CarouselItem>
                 </Carousel>
