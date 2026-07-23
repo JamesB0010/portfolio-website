@@ -34,8 +34,8 @@ export const PageLinks = ({ currentViewportWidth, onPageLinkClicked }: PageLinks
             <button className="page-link-button" onClick={() => pageLinkClickedCallback("industry-experience")}>
                 <p>Industry Experience</p>
             </button>
-            <button className="page-link-button" onClick={() => pageLinkClickedCallback("articles")}>
-                <p>Articles</p>
+            <button className="page-link-button" onClick={() => pageLinkClickedCallback("uni-projects")}>
+                <p>University Projects</p>
             </button>
             <button className="page-link-button" onClick={() => pageLinkClickedCallback("skills")}>
                 <p>Skills</p>
